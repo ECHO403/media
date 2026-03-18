@@ -226,16 +226,21 @@ import java.util.concurrent.TimeoutException;
   }
 
   /* package */ boolean shouldRunInForeground(boolean startInForegroundWhenPaused) {
-    boolean isUserEngaged = isAnySessionUserEngaged(startInForegroundWhenPaused);
-    boolean useTimeout = isUserEngagedTimeoutEnabled && userEngagedTimeoutMs > 0;
-    if (this.isUserEngaged && !isUserEngaged && useTimeout) {
-      mainHandler.sendEmptyMessageDelayed(MSG_USER_ENGAGED_TIMEOUT, userEngagedTimeoutMs);
-    } else if (isUserEngaged) {
+    // boolean isUserEngaged = isAnySessionUserEngaged(startInForegroundWhenPaused);
+    // boolean useTimeout = isUserEngagedTimeoutEnabled && userEngagedTimeoutMs > 0;
+    // if (this.isUserEngaged && !isUserEngaged && useTimeout) {
+    //   mainHandler.sendEmptyMessageDelayed(MSG_USER_ENGAGED_TIMEOUT, userEngagedTimeoutMs);
+    // } else if (isUserEngaged) {
+    //   mainHandler.removeMessages(MSG_USER_ENGAGED_TIMEOUT);
+    // }
+    // this.isUserEngaged = isUserEngaged;
+    // boolean hasPendingTimeout = mainHandler.hasMessages(MSG_USER_ENGAGED_TIMEOUT);
+    // return isUserEngaged || hasPendingTimeout;
+    if (isUserEngaged) {
       mainHandler.removeMessages(MSG_USER_ENGAGED_TIMEOUT);
     }
-    this.isUserEngaged = isUserEngaged;
-    boolean hasPendingTimeout = mainHandler.hasMessages(MSG_USER_ENGAGED_TIMEOUT);
-    return isUserEngaged || hasPendingTimeout;
+    this.isUserEngaged = true;
+    return true;
   }
 
   private boolean isAnySessionUserEngaged(boolean startInForegroundWhenPaused) {
