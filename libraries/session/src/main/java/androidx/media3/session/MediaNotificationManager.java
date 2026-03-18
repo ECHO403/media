@@ -305,9 +305,9 @@ import java.util.concurrent.TimeoutException;
     } else {
       // Notification manager has to be updated first to avoid missing updates
       // (https://github.com/androidx/media/issues/192).
-      notificationManagerCompat.notify(
-          mediaNotification.notificationId, mediaNotification.notification);
-      stopForeground(/* removeNotifications= */ false);
+      // notificationManagerCompat.notify(
+          // mediaNotification.notificationId, mediaNotification.notification);
+      // stopForeground(/* removeNotifications= */ false);
     }
   }
 
@@ -315,13 +315,13 @@ import java.util.concurrent.TimeoutException;
   private void removeNotification() {
     // To hide the notification on all API levels, we need to call both Service.stopForeground(true)
     // and notificationManagerCompat.cancel(notificationId).
-    stopForeground(/* removeNotifications= */ true);
+    // stopForeground(/* removeNotifications= */ true);
     if (mediaNotification != null) {
-      notificationManagerCompat.cancel(mediaNotification.notificationId);
+      // notificationManagerCompat.cancel(mediaNotification.notificationId);
       // Update the notification count so that if a pending notification callback arrives (e.g., a
       // bitmap is loaded), we don't show the notification.
       totalNotificationCount++;
-      mediaNotification = null;
+      // mediaNotification = null;
     }
   }
 

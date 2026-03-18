@@ -85,6 +85,7 @@ cd "${FFMPEG_MODULE_PATH}/jni/ffmpeg"
     --strip="${TOOLCHAIN_PREFIX}/llvm-strip" \
     --extra-cflags="-march=armv7-a -mfloat-abi=softfp" \
     --extra-ldflags="-Wl,--fix-cortex-a8" \
+    --disable-logging \
     ${COMMON_OPTIONS}
 make -j$JOBS
 make install-libs

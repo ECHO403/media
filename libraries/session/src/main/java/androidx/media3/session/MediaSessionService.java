@@ -622,7 +622,7 @@ public abstract class MediaSessionService extends Service {
     if (!isPlaybackOngoing() || !isAnySessionPlaying()) {
       // The service needs to be stopped when playback is not ongoing (i.e, the service is not in
       // the foreground). It is also force-stopped if no session is playing.
-      pauseAllPlayersAndStopSelf();
+      // pauseAllPlayersAndStopSelf();
     }
   }
 
